@@ -1,0 +1,11 @@
+import { createStore, applyMiddleware } from 'redux'
+import logger from 'redux-logger' // Nice to use when debugging our redux code
+import { persistStore } from 'redux-persist'
+
+import rootReducer from './RootReducer'
+
+const middlewares = [logger]
+
+export const store = createStore(rootReducer, applyMiddleware(...middlewares))
+
+export const persistor = persistStore(store) // persisted version of our store
